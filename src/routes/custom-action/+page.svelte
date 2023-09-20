@@ -65,7 +65,7 @@
 </Modal>
 
 <div id="embed">
-    <p>Add a custom action</p>
+    <p>Loading visualization with custom action.....</p>
 </div>
 
 <style>
