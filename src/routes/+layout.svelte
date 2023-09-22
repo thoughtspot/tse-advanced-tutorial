@@ -14,12 +14,11 @@
   } from 'flowbite-svelte';
   import '../app.postcss';
   import '../app.css';
-  import {currentUser, tsURL, developerDocs, version} from "$lib/store.js";
+  import {currentUser, developerDocs, tsURL, version} from "$lib/store.js";
   import {page} from '$app/stores';
+  import {AuthType, init} from '$lib/tsembed.es.js';
 
   $: activeUrl = $page.url.pathname;
-
-  import {AuthType, init} from '$lib/tsembed.es.js';
 
   init({
     thoughtSpotHost: tsURL,
@@ -49,18 +48,18 @@
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
     <div class="sm:flex sm:items-right sm:justify-between">
         <FooterBrand href="https://thoughtspot.com" src={ts_logo} alt="ThoughtSpot Logo"
-                     name="ThoughtSpot"/>
+                     name="ThoughtSpot" target="_blank"/>
         <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-1">
             <div>
-                <span class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Cluster Info</span>
                 <FooterLinkGroup>
                     <span>Logged in as {currentUser}</span>
                     <span>&nbsp;</span>  <!-- spacer - this seems hacky -->
-                    <FooterLink href="{tsURL}" target="_blank">ThoughtSpot Host (v {version})</FooterLink>
-                    <FooterLink href="{developerDocs}" target="_blank">Developer Docs</FooterLink>
+                    <FooterLink classA="hover:underline hover:text-orange-600" href="{tsURL}" target="_blank">ThoughtSpot Host (v {version})</FooterLink>
+                    <FooterLink classA="hover:underline hover:text-orange-600" href="{developerDocs}" target="_blank">Developer Docs</FooterLink>
                 </FooterLinkGroup>
             </div>
         </div>
     </div>
     <FooterCopyright href="/" by="ThoughtSpot"/>
 </Footer>
+

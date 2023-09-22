@@ -3,21 +3,21 @@
 
   import {EmbedEvent, HostEvent, SearchEmbed} from '$lib/tsembed.es.js';
 
-  const worksheetID = "cd252e5c-b552-49a8-821d-3eadaa049cca";  // ID of the worksheet to use for chart/table.
+  const worksheetID = "4d98d3f5-5c6a-44eb-82fb-d529ca20e31f";  // ID of the worksheet to use for chart/table.
 
   const onHostEvent = () => {
     const embed = new SearchEmbed("#chart-embed", {
       dataSources: [worksheetID],
       collapseDataSources: true,
       searchOptions: {
-        searchTokenString: '[sales] [item type] top 30 [date].monthly',
+        searchTokenString: '[sales] [product type] top 30 [sales date].monthly',
         executeSearch: true,
       },
     });
 
     embed
-    .on(EmbedEvent.Data, payload => showTable(embed, payload))
-    .render();
+      .on(EmbedEvent.Data, payload => showTable(embed, payload))
+      .render();
   }
 
   const showTable = (embed, payload) => {
@@ -34,6 +34,7 @@
           searchTokenString: search,
           executeSearch: true,
         },
+        visibleActions: []  // hide all actions.
       });
       embedTable.render();
     });
@@ -44,7 +45,6 @@
     onHostEvent();
   })
 
-  let horizontal = false;
 </script>
 
 <div id="chart-embed">
@@ -57,7 +57,7 @@
 
   #chart-embed, #table-embed {
     height: 40vh;
-    width: 100%;
+    width: 100vw;
   }
 
 </style>
