@@ -17,6 +17,10 @@ h1 {
   font-size: 24px;
 }
 
+.h-80h {
+  height: 80vh;
+}
+
 p {
   padding: 10px;
 }
