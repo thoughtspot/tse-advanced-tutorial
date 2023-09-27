@@ -1,0 +1,93 @@
+/*! ThoughtSpot 2023-09-10
+* http://www.thoughtspot.com/
+* Copyright (c) 2023 ThoughtSpot
+*/
+:root {
+  /* App */
+  --ts-var-root-color: initial;
+  --ts-var-root-background: initial;
+  --ts-var-root-font-family: initial;
+  --ts-var-root-text-transform: initial;
+  /* Nav Bar */
+  --ts-var-nav-color: var(--ts-var-root-color);
+  --ts-var-nav-background: initial;
+  --ts-var-search-data-button-font-color: var(--ts-var-root-color);
+  --ts-var-search-data-button-background: initial;
+  --ts-var-search-data-button-font-family: var(--ts-var-root-font-family);
+  /* Search Bar */
+  --ts-var-search-bar-text-font-color: var(--ts-var-root-color);
+  --ts-var-search-bar-text-font-family: var(--ts-var-root-font-family);
+  --ts-var-search-bar-text-font-style: initial;
+  --ts-var-search-bar-background: initial;
+  --ts-var-search-auto-complete-background: initial;
+  --ts-var-search-auto-complete-font-color: var(--ts-var-root-color);
+  --ts-var-search-auto-complete-subtext-font-color: initial;
+  --ts-var-search-navigation-button-background: initial;
+  --ts-var-search-bar-navigation-help-text-background: initial;
+  --ts-var-search-bar-auto-complete-hover-background: initial;
+  /* Data Panel in Answers Tab */
+  --ts-var-answer-data-panel-background-color: initial;
+  --ts-var-answer-view-table-chart-switcher-background: initial;
+  --ts-var-answer-view-table-chart-switcher-active-background: initial;
+  --ts-var-answer-edit-panel-background-color: initial;
+  /* Button */
+  --ts-var-button-border-radius: initial;
+  --ts-var-button--icon-border-radius: initial;
+  --ts-var-button--primary-color: var(--ts-var-root-color);
+  --ts-var-button--primary-background: initial;
+  --ts-var-button--primary--hover-background: initial;
+  --ts-var-button--primary--font-family: var(--ts-var-root-font-family);
+  --ts-var-button--secondary-color: var(--ts-var-root-color);
+  --ts-var-button--secondary-background: initial;
+  --ts-var-button--secondary--hover-background: initial;
+  --ts-var-button--secondary--font-family: var(--ts-var-root-font-family);
+  --ts-var-button--tertiary-color: var(--ts-var-root-color);
+  --ts-var-button--tertiary-background: initial;
+  --ts-var-button--tertiary--hover-background: initial;
+  /* Chart */
+  --ts-var-answer-chart-select-background: initial;
+  --ts-var-answer-chart-hover-background: initial;
+  /* Liveboard */
+  --ts-var-liveboard-edit-bar-background: initial;
+  /* Viz */
+  --ts-var-viz-title-color: var(--ts-var-root-color);
+  --ts-var-viz-title-font-family: var(--ts-var-root-font-family);
+  --ts-var-viz-title-text-transform: var(--ts-var-root-text-transform);
+  --ts-var-viz-description-color: var(--ts-var-root-color);
+  --ts-var-viz-description-font-family: var(--ts-var-root-font-family);
+  --ts-var-viz-description-text-transform: var(--ts-var-root-text-transform);
+  --ts-var-viz-border-radius: initial;
+  --ts-var-viz-box-shadow: initial;
+  --ts-var-viz-background: initial;
+  --ts-var-viz-legend-hover-background: initial;
+  /* Chip */
+  --ts-var-chip-border-radius: initial;
+  --ts-var-chip-title-font-family: var(--ts-var-root-font-family);
+  --ts-var-chip-box-shadow: initial;
+  --ts-var-chip-background: initial;
+  --ts-var-chip-color: var(--ts-var-root-color);
+  --ts-var-chip--hover-background: initial;
+  --ts-var-chip--hover-color: var(--ts-var-root-color);
+  --ts-var-chip--active-background: initial;
+  --ts-var-chip--active-color: initial;
+  /* Axis */
+  --ts-var-axis-title-color: var(--ts-var-root-color);
+  --ts-var-axis-title-font-family: var(--ts-var-root-font-family);
+  --ts-var-axis-data-label-color: var(--ts-var-root-color);
+  --ts-var-axis-data-label-font-family: var(--ts-var-root-font-family);
+  /* Menu */
+  --ts-var-menu-color: var(--ts-var-root-color);
+  --ts-var-menu-background: initial;
+  --ts-var-menu-font-family: var(--ts-var-root-font-family);
+  --ts-var-menu-text-transform: var(--ts-var-root-text-transform);
+  --ts-var-menu--hover-background: initial;
+  --ts-var-menu-seperator-background: initial;
+  /* Dialog */
+  --ts-var-dialog-body-background: initial;
+  --ts-var-dialog-body-color: var(--ts-var-root-color);
+  --ts-var-dialog-header-background: initial;
+  --ts-var-dialog-header-color: var(--ts-var-root-color);
+  --ts-var-dialog-footer-background: initial;
+}
+
+/*# sourceMappingURL=custom_variables.css.map */

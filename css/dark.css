@@ -1,0 +1,145 @@
+/*! ThoughtSpot 2022-09-17
+* http://www.thoughtspot.com/
+* Copyright (c) 2022 ThoughtSpot
+*/
+
+/* Variable based dark theme for liveboard or viz embed */
+
+@font-face {
+  font-family: 'Italiana';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/italiana/v16/QldNNTtLsx4E__B0XQmWaXx0xKVu.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/******** Useful design resources ********/
+/* Check our Radiant style guide. For colors: https://radiant.thoughtspot.com/4be2fa497/p/28fa0a-colors/t/835c57 */
+/****************************************/
+
+:root {
+  /***** App *****/
+  --ts-var-root-background:#131313;
+  --ts-var-root-color: white;
+  --ts-var-root-font-family:initial;
+  --ts-var-root-text-transform:initial;
+
+  /***** Nav bar *****/
+  /* Nav bar font color, background color, color, background, and font family of the search data button in the navigation */
+  /* Note: In Radiant design, background nav color will be shade 70, font color shade 40 */
+  --ts-var-nav-color: initial;
+  --ts-var-nav-background: initial;
+  --ts-var-search-data-button-font-color: var(--ts-var-root-color);
+  --ts-var-search-data-button-background: initial;
+  --ts-var-search-data-button-font-family: var(--ts-var-root-font-family);
+
+  /***** Buttons *****/
+  /* App wide button design for main buttons*/
+  --ts-var-button-border-radius: 5px;
+
+  /* App wide button design for smaller buttons (ex: share, favorite, etc.)*/
+  --ts-var-button--icon-border-radius: 5px;
+
+  /* Primary buttons: For instance the Go button on the Search bar, when the search bar is clicked on */
+  /* Note: In Radiant design, primary button color will be shade 60, hover shade 70 */
+  --ts-var-button--primary-color: white;
+  --ts-var-button--primary-background: #373737;
+  --ts-var-button--primary--hover-background: #373737;
+  --ts-var-button--primary--font-family: initial;
+
+  /* Secondary buttons: For instance most of the buttons on a Liveboard */
+  /* Note: In Radiant design, secondary button color will be shade 20, hover shade 30 */
+  --ts-var-button--secondary-color: white;
+  --ts-var-button--secondary-background: #454648;
+  --ts-var-button--secondary--hover-background: #454648;
+  --ts-var-button--secondary--font-family: initial;
+
+  /* Tertiary buttons: Example the forward / back buttons */
+  --ts-var-button--tertiary-color: white;
+  --ts-var-button--tertiary-background: #454648;
+  --ts-var-button--tertiary--hover-background: #454648;
+
+  /***** LIVEBOARDS *****/
+  /******** Visualizations ********/
+  /* Viz title customizations*/
+
+  --ts-var-viz-title-color: #fff;
+  --ts-var-viz-title-font-family: initial;
+  --ts-var-viz-title-text-transform: italic;
+
+  /* Viz subtitle customizations*/
+  --ts-var-viz-description-color: #A4A4A3;
+  --ts-var-viz-description-font-family: initial;
+  --ts-var-viz-description-text-transform: initial;
+
+  /* Viz area customizations*/
+  // --ts-var-viz-border-radius: 15px;
+  // --ts-var-viz-box-shadow: 1px 2px 5px #888888;
+  --ts-var-viz-background:#1f1f1f;
+  --ts-var-viz-legend-hover-background:#454648;
+
+  /* Viz and answer dropdown menus (axis, liveboard menu, drill menu, etc.) */
+  --ts-var-menu-color: var(--ts-var-root-color);
+  --ts-var-menu-background:#131313;
+  --ts-var-menu-font-family: var(--ts-var-root-font-family);
+  --ts-var-menu-text-transform: var(--ts-var-root-text-transform);
+  --ts-var-menu--hover-background:#454648;
+
+  /* Popup windows */
+  --ts-var-dialog-body-background: var(--ts-var-viz-background);
+  --ts-var-dialog-body-color: var(--ts-var-root-color);
+  --ts-var-dialog-header-background: var(--ts-var-viz-background);
+  --ts-var-dialog-header-color: var(--ts-var-root-color);
+  --ts-var-dialog-footer-background: var(--ts-var-viz-background);
+
+  /* Chart Axis formatting */
+  --ts-var-axis-title-color: var(--ts-var-root-color);
+  --ts-var-axis-title-font-family: var(--ts-var-root-font-family);
+
+  /* Color on data labels */
+  --ts-var-axis-data-label-color: var(--ts-var-root-color);
+  --ts-var-axis-data-label-font-family: var(--ts-var-root-font-family);
+
+  /******** Chip: The filter chips on liveboards and answers ********/
+  /* Chip layout */
+
+  --ts-var-chip-border-radius: var(--ts-var-button-border-radius);
+  --ts-var-chip-title-font-family: var(--ts-var-root-font-family);
+  --ts-var-chip-box-shadow: initial;
+
+  /* Chip default background and font color */
+  --ts-var-chip-background:#373737;
+  --ts-var-chip-color: var(--ts-var-root-color);
+
+  /* Chip default background and font color */
+  --ts-var-chip--hover-background:#454648;
+  --ts-var-chip--hover-color:var(--ts-var-root-color);
+
+  /* Chip default background and font color */
+  --ts-var-chip--active-background:initial;
+  --ts-var-chip--active-color:initial;
+
+  /***** SEARCH BAR *****/
+  --ts-var-search-bar-text-font-color: black;
+  --ts-var-search-bar-text-font-family: var(--ts-var-root-font-family);
+  --ts-var-search-bar-text-font-style: initial;
+  --ts-var-search-bar-background: var(--ts-var-viz-background);
+  --ts-var-search-auto-complete-background: var(--ts-var-search-bar-background);
+  --ts-var-search-navigation-button-background: var(--ts-var-search-bar-background);
+  --ts-var-search-bar-navigation-help-text-background: grey;
+  --ts-var-search-bar-auto-complete-hover-background: var(--ts-var-button--secondary--hover-background);
+
+
+  /***** ANSWERS *****/
+  /* Chart picker menu */
+  --ts-var-answer-chart-select-background: #373737;
+  --ts-var-answer-chart-hover-background: #454648;
+  --ts-var-answer-view-table-chart-switcher-active-background: #373737;
+  --ts-var-answer-view-table-chart-switcher-background: #454648;
+
+  /* Data Panel in Answers Tab */
+  --ts-var-answer-data-panel-background-color:var(--ts-var-viz-background);
+}
+
+/*# sourceMappingURL=custom_variables.css.map */
