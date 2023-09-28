@@ -26,7 +26,6 @@
   #welcome {
     padding: 80px;
     font-size: 1.2em;
-    background: linen;
   }
 
   h1 {
