@@ -1,6 +1,6 @@
 <div id="welcome">
     <h1>Welcome to ThoughtSpot Everywhere Advanced Training</h1>
-    <p>This application is designed to let you learn to more tightly integrate ThoughtSpot into your applicaiton.
+    <p>This application is designed to let you learn to more tightly integrate ThoughtSpot into your application.
         It contains the following learning topics:</p>
 
     <ul class="instructions">
