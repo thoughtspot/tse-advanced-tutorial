@@ -25,3 +25,12 @@ p {
   padding: 10px;
 }
 
+ul.instructions {
+  list-style-type: circle;
+  padding-left: 10px;
+  margin-left: 30px;
+}
+
+ul.instructions li {
+}
+

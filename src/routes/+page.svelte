@@ -1,2 +1,21 @@
 <h1>Welcome to ThoughtSpot Everywhere Advanced Training</h1>
-<p>TODO add details on the training and how to proceed.</p>
+<p>This application is designed to let you learn to more tightly integrate ThoughtSpot into your applicaiton.
+It contains the following learning topics:</p>
+
+<ul class="instructions">
+    <li>Authenticating using trusted authentication.</li>
+    <li>Using REST APIs to get system information.</li>
+    <li>Responding to custom actions to extend the capabilities of ThoughtSpot.</li>
+    <li>Handling system events and sending host events.</li>
+    <li>Call the SearchData API and rending in your application.</li>
+    <li>Use a custom CSS in the embedded ThoughtSpot.</li>
+</ul>
+
+<p>The application has the following pages:</p>
+
+<ul class="instructions">
+    <li>Home page - shows the overview of the application.</li>
+    <li>Custom Action - shows an embedded liveboard with a custom action.</li>
+    <li>Host Event - contains two embedded search components with one responding to actions in the other.</li>
+    <li>Data API - shows a table based data from the SearchData API call.</li>
+</ul>
