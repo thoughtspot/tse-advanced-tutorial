@@ -7,7 +7,6 @@ This application is designed to let you learn to more tightly integrate ThoughtS
 
 * Authenticating using trusted authentication.
 * Using REST APIs to get system information.
-* Responding to custom actions to extend the capabilities of ThoughtSpot.
 * Handling system events and sending host events.
-* Call the SearchData API and rending in your application.
+* Responding to custom actions to extend the capabilities of ThoughtSpot.
 * Use a custom CSS in the embedded ThoughtSpot.

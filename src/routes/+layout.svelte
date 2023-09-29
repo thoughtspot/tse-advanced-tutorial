@@ -138,9 +138,11 @@
     <NavHamburger on:click={toggle}/>
     <NavUl {hidden} {activeUrl}>
         <NavLi href="/">Home</NavLi>
-        <NavLi href="/custom-action">Custom Action</NavLi>
         <NavLi href="/host-event">Host Event</NavLi>
+        <NavLi href="/custom-action">Custom Action</NavLi>
+        <!--
         <NavLi href="/get-data">Data API</NavLi>
+        -->
     </NavUl>
 </Navbar>
 
