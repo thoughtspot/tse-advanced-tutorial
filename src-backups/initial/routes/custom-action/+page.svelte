@@ -7,22 +7,8 @@
 
   const onCustomAction = () => {
 
-    // TODO replace the following with an embed that responds to a custom action.
-    // document.getElementById("embed").innerHTML = "<p class='warning'>Custom action not yet embedded.</p>";
-
-    const embed = new LiveboardEmbed("#embed", {
-      liveboardId: "879252b1-510c-4fed-a4ae-ad8d14e40d90",
-      vizId: "c17072a9-8f4b-4016-9dcf-920c5ec65eda",
-      visibleActions: ['show-details'],
-    });
-
-    embed
-      .on(EmbedEvent.CustomAction, payload => {
-        if (payload.id === 'show-details' || payload.data.id === 'show-details') {
-          showDetails(payload);
-        }
-      })
-      .render();
+    // TODO replace the following with a LiveboardEmbed that responds to a custom action.
+    document.getElementById("embed").innerHTML = "<p class='warning'>Custom action not yet embedded.</p>";
   }
 
 
