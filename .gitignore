@@ -1,3 +1,4 @@
+.env
 .idea
 .svelte-kit
 node_modules
