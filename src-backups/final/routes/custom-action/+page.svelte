@@ -28,15 +28,23 @@
 
   // Show a pop-up with the product sales for the state selected.
   const showDetails = (payload) => {
-    // TODO: create a LiveboardCustomerActionData object.
-    const liveboardContextData = null;
+    const pinboardContextData = LiveboardContextActionData.createFromJSON(payload);
 
-    // TODO: set the filter value from the liveboardContextData
     // Only gets the first column value.
-    const filter = null;
+    const filter = pinboardContextData.data[pinboardContextData.columnNames[0]];
 
-    // TODO use the playground to create a LiveboardEmbed, put it into #show-details and render it with runtime filters.
     // Now show the details with the filter applied in a popup.
+    const popupEmbed = new LiveboardEmbed("#show-details", {
+      liveboardId: "879252b1-510c-4fed-a4ae-ad8d14e40d90",
+      vizId: "4a002bae-8e3c-4bcd-8bbf-1e74cea4e41e",
+      runtimeFilters: [{
+        columnName: 'state',
+        operator: RuntimeFilterOp.EQ,
+        values: [filter]
+      }],
+    });
+
+    popupEmbed.render();
 
     // display the model box.
     showModal = 'visible';
