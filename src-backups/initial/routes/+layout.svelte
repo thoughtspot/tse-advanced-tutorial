@@ -19,7 +19,7 @@
   import {constants, cssFiles} from "$lib/constants.js";
   import {store} from "$lib/store.js";
   import {page} from '$app/stores';
-  import {AuthStatus} from '$lib/tsembed.es.js';
+  import {AuthStatus, AuthType, init} from '$lib/tsembed.es.js';
   import {TSAPIv2} from '$lib/rest-api-v2.0.js';
 
   $: activeUrl = $page.url.pathname;

@@ -1,3 +1,10 @@
+<script>
+import ts_logo from "$lib/images/ts.png";
+import {store} from "$lib/store.js";
+import {constants} from "$lib/constants.js";
+import {Footer, FooterBrand, FooterCopyright, FooterLink, FooterLinkGroup} from "flowbite-svelte";
+</script>
+
 <div id="welcome">
     <h1>Welcome to ThoughtSpot Everywhere Advanced Training</h1>
     <p>This application is designed to let you learn to more tightly integrate ThoughtSpot into your application.
@@ -25,6 +32,30 @@
         -->
     </ul>
 </div>
+
+<Footer footerType="logo" class="absolute bottom-0 min-w-full">
+    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
+    <div class="sm:flex sm:items-right sm:justify-between">
+        <FooterBrand href="https://thoughtspot.com" src={ts_logo} alt="ThoughtSpot Logo"
+                     name="ThoughtSpot" target="_blank"/>
+        <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-1">
+            <div>
+                <FooterLinkGroup>
+                    <span>Logged in as {$store.tsUser}</span>
+                    <span>&nbsp;</span>  <!-- spacer - this seems hacky -->
+                    <FooterLink classA="hover:underline hover:text-orange-600" href="{constants.tsURL}" target="_blank">
+                        ThoughtSpot Host (v {$store.version})
+                    </FooterLink>
+                    <FooterLink classA="hover:underline hover:text-orange-600" href="{constants.developerDocs}"
+                                target="_blank">
+                        Developer Docs
+                    </FooterLink>
+                </FooterLinkGroup>
+            </div>
+        </div>
+    </div>
+    <FooterCopyright href="/" by="ThoughtSpot"/>
+</Footer>
 
 <style>
   #welcome {

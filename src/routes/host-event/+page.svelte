@@ -6,22 +6,44 @@
   const worksheetID = "4d98d3f5-5c6a-44eb-82fb-d529ca20e31f";  // ID of the worksheet to use for chart/table.
 
   const onHostEvent = () => {
+    const embed = new SearchEmbed("#chart-embed", {
+      dataSources: [worksheetID],
+      collapseDataSources: true,
+      searchOptions: {
+        searchTokenString: '[sales] [product type] top 30 [sales date].monthly',
+        executeSearch: true,
+      },
+    });
 
-    // TODO: embed a SearchEmbed with a handler for EventEmbed.Data.
-    const embed = null;
-
+    embed
+      .on(EmbedEvent.Data, payload => showTable(embed, payload))
+      .render();
   }
 
   const showTable = (embed, payload) => {
 
-    // Get TML and then embed a SearchEmbed with the TML search.
-    embed.trigger();
+    embed.trigger(HostEvent.GetTML).then(response => {
+      let search = response.answer.search_query;
+      console.log("TML string: " + search);
+
+      const embedTable = new SearchEmbed("#table-embed", {
+        dataSources: [worksheetID],
+        hideDataSources: true,
+        forceTable: true,
+        searchOptions: {
+          searchTokenString: search,
+          executeSearch: true,
+        },
+        visibleActions: []  // hide all actions.
+      });
+      embedTable.render();
+    });
   }
 
 
   onMount(() => {
     onHostEvent();
-  });
+  })
 
 </script>
 
@@ -34,7 +56,7 @@
 <style>
 
   #chart-embed, #table-embed {
-    height: 40vh;
+    height: 45vh;
     width: 100vw;
   }
 

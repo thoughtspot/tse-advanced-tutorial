@@ -21,6 +21,14 @@ h1 {
   height: 80vh;
 }
 
+.h-90h {
+  height: 95vh;
+}
+
+.h-95h {
+  height: 95vh;
+}
+
 p {
   padding: 10px;
 }
