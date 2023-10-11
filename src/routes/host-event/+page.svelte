@@ -17,18 +17,6 @@
         // Note the embed IDs in the HTML.
         // -------------------------------------------------------------------------------
 
-        const embed = new SearchEmbed("#chart-embed", {
-            dataSources: [worksheetID],
-            collapseDataSources: true,
-            searchOptions: {
-                searchTokenString: '[sales] [product type] top 30 [sales date].monthly',
-                executeSearch: true,
-            },
-        });
-
-        embed
-            .on(EmbedEvent.Data, payload => showTable(embed, payload))
-            .render();
     }
 
     const showTable = (embed, payload) => {
@@ -38,22 +26,6 @@
         // Note the embed IDs in the HTML.
         // -------------------------------------------------------------------------------
 
-        embed.trigger(HostEvent.GetTML).then(response => {
-            let search = response.answer.search_query;
-            console.log("TML string: " + search);
-
-            const embedTable = new SearchEmbed("#table-embed", {
-                dataSources: [worksheetID],
-                hideDataSources: true,
-                forceTable: true,
-                searchOptions: {
-                    searchTokenString: search,
-                    executeSearch: true,
-                },
-                visibleActions: []  // hide all actions.
-            });
-            embedTable.render();
-        });
     }
 
     onMount(() => {
@@ -63,6 +35,7 @@
 </script>
 
 <div id="chart-embed">
+    <p class="info">Chart not yet embedded.</p>
 </div>
 <div id="table-embed">
     <p id="waiting-for-data" class="info">{waitingMsg}<p>

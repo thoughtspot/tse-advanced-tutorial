@@ -1,39 +1,42 @@
 <script>
-  import {onMount} from "svelte";
-  import Modal from '$lib/components/Modal.svelte';
+    import {store} from "$lib/store.js";
+    import {onMount} from "svelte";
+    import Modal from '$lib/components/Modal.svelte';
 
-  import {EmbedEvent, LiveboardEmbed, RuntimeFilterOp,} from '$lib/tsembed.es.js';
-  import {LiveboardContextActionData} from "$lib/dataclasses.js";
+    import {EmbedEvent, LiveboardEmbed, RuntimeFilterOp,} from '$lib/tsembed.es.js';
+    import {LiveboardContextActionData} from "$lib/dataclasses.js";
 
-  const onCustomAction = () => {
+    $: $store.cssFile, onCustomAction();
 
-    // TODO replace the following with a LiveboardEmbed that responds to a custom action.
-    document.getElementById("embed").innerHTML = "<p class='warning'>Custom action not yet embedded.</p>";
-  }
+    const onCustomAction = () => {
 
+        // -------------------------------------------------------------------------------
+        // Exercise 4.1: Embed a liveboard with a state and handle the custom action event.
+        // -------------------------------------------------------------------------------
 
-  // Show a pop-up with the product sales for the state selected.
-  const showDetails = (payload) => {
-    // TODO: create a LiveboardCustomerActionData object.
-    const liveboardContextData = null;
+    }
 
-    // TODO: set the filter value from the liveboardContextData
-    // Only gets the first column value.
-    const filter = null;
+    // Show a pop-up with the product sales for the state selected.
+    const showDetails = (payload) => {
 
-    // TODO use the playground to create a LiveboardEmbed, put it into #show-details and render it with runtime filters.
-    // Now show the details with the filter applied in a popup.
+        // -------------------------------------------------------------------------------
+        // Exercise 4.2: Show a modal box with the details of the state selected.
+        // 1. Create a LiveboardContextActionData object from the payload.
+        // 2. Get the filter value from the data.
+        // 3. Create a new LiveboardEmbed object with runtime filters using the state.
+        // Note the embed-id for the modal box is "show-details".
+        // -------------------------------------------------------------------------------
 
-    // display the model box.
-    showModal = 'visible';
-  }
+        // display the model box.
+        showModal = 'visible';
+    }
 
-  /** Whether to show the modal. */
-  let showModal = 'hidden';
+    /** Whether to show the modal. */
+    let showModal = 'hidden';
 
-  onMount(() => {
-    onCustomAction();
-  })
+    onMount(() => {
+        onCustomAction();
+    })
 
 </script>
 
@@ -46,11 +49,11 @@
 </div>
 
 <style>
-  #embed {
-    height: 80vh;
-  }
+    #embed {
+        height: 90vh;
+    }
 
-  #show-details {
-    height: 60vh;
-  }
+    #show-details {
+        height: 60vh;
+    }
 </style>

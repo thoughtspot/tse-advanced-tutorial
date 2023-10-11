@@ -3,11 +3,6 @@
     import {invalidateAll} from "$app/navigation";
     import ts_logo from '$lib/images/ts.png';
     import {
-        Footer,
-        FooterBrand,
-        FooterCopyright,
-        FooterLink,
-        FooterLinkGroup,
         Navbar,
         NavBrand,
         NavHamburger,
@@ -34,6 +29,7 @@
             // 1. Set the authType to TrustedAuthToken
             // 2. Set the username to the value of $store.tsUser
             // 3. Set the getAuthToken to the getAuthToken function
+            // 4. Uncomment the line to set up the API.
             // -------------------------------------------------------------------------------
 
             // -------------------------------------------------------------------------------
@@ -41,21 +37,10 @@
             // function to be the value of the $store.cssFile variable.  See toggleCSS below.
             // -------------------------------------------------------------------------------
 
-            const ee = init({
-                    thoughtSpotHost: constants.tsURL,
-                    // authType: AuthType.None,
-                    authType: AuthType.TrustedAuthToken,
-                    username: $store.tsUser,
-                    getAuthToken: getAuthToken,
-                    customizations: {
-                        style: {
-                            customCSSUrl: $store.cssFile,
-                        }
-                    }
-                }
-            );
+            const ee = null; // init()
 
             if (ee) {
+                // This section shows how to capture the return values from init().
                 ee
                     .on(AuthStatus.SUCCESS, () => {
                         console.log("Success");
@@ -68,7 +53,8 @@
                     })
             }
 
-            await setupAPI();  // make sure the API is set up.
+            // Uncomment to set up the API after calling init.
+            // await setupAPI();  // make sure the API is set up.
         }
     ;
 
@@ -116,16 +102,11 @@
         // Exercise 2: Add a call to the system API to get the version of ThoughtSpot and then set the $store.version
         // The system API call is in /lib/rest-api-v2.0.js, q.v.
         // You will see the results in the footer (located in the +page.svelte file) once completed.
+        //
+        // The format for the call will be $store.tsAPI.system().then((response) => {.....
+        // This can only be done after the API object is created.
         // -------------------------------------------------------------------------------
 
-        $store.tsAPI.system().then((response) => {
-            console.log(response);
-            try {
-                $store.version = response.release_version;
-            } catch (e) {
-                console.log('error getting version: ' + e);
-            }
-        });
     }
 
     const toggleCSS = () => {
