@@ -33,7 +33,7 @@ import {Footer, FooterBrand, FooterCopyright, FooterLink, FooterLinkGroup} from 
     </ul>
 </div>
 
-<Footer footerType="logo" class="absolute bottom-0 min-w-full">
+<Footer footerType="logo" class="relative bottom-10 min-w-full">
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
     <div class="sm:flex sm:items-right sm:justify-between">
         <FooterBrand href="https://thoughtspot.com" src={ts_logo} alt="ThoughtSpot Logo"
@@ -43,6 +43,7 @@ import {Footer, FooterBrand, FooterCopyright, FooterLink, FooterLinkGroup} from 
                 <FooterLinkGroup>
                     <span>Logged in as {$store.tsUser}</span>
                     <span>&nbsp;</span>  <!-- spacer - this seems hacky -->
+                    <!-- Training Note: The version will automatically update after REST API calls -->
                     <FooterLink classA="hover:underline hover:text-orange-600" href="{constants.tsURL}" target="_blank">
                         ThoughtSpot Host (v {$store.version})
                     </FooterLink>
@@ -59,7 +60,7 @@ import {Footer, FooterBrand, FooterCopyright, FooterLink, FooterLinkGroup} from 
 
 <style>
   #welcome {
-    padding: 80px;
+    padding: 10px 50px;
     font-size: 1.2em;
     overflow: scroll;
     height: 75vh;

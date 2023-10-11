@@ -1,61 +1,74 @@
 <script>
-  import {onMount} from "svelte";
-  import Modal from '$lib/components/Modal.svelte';
+    import {store} from "$lib/store.js";
+    import {onMount} from "svelte";
+    import Modal from '$lib/components/Modal.svelte';
 
-  import {EmbedEvent, LiveboardEmbed, RuntimeFilterOp,} from '$lib/tsembed.es.js';
-  import {LiveboardContextActionData} from "$lib/dataclasses.js";
+    import {EmbedEvent, LiveboardEmbed, RuntimeFilterOp,} from '$lib/tsembed.es.js';
+    import {LiveboardContextActionData} from "$lib/dataclasses.js";
 
-  const onCustomAction = () => {
+    $: $store.cssFile, onCustomAction();
 
-    // TODO replace the following with an embed that responds to a custom action.
-    // document.getElementById("embed").innerHTML = "<p class='warning'>Custom action not yet embedded.</p>";
+    const onCustomAction = () => {
 
-    const embed = new LiveboardEmbed("#embed", {
-      liveboardId: "879252b1-510c-4fed-a4ae-ad8d14e40d90",
-      vizId: "c17072a9-8f4b-4016-9dcf-920c5ec65eda",
-      visibleActions: ['show-details'],
-    });
+        // -------------------------------------------------------------------------------
+        // Exercise 4.1: Embed a liveboard with a state and handle the custom action event.
+        // -------------------------------------------------------------------------------
+        // document.getElementById("embed").innerHTML = "<p class='warning'>Custom action not yet embedded.</p>";
 
-    embed
-      .on(EmbedEvent.CustomAction, payload => {
-        if (payload.id === 'show-details' || payload.data.id === 'show-details') {
-          showDetails(payload);
-        }
-      })
-      .render();
-  }
+        const embed = new LiveboardEmbed("#embed", {
+            liveboardId: "879252b1-510c-4fed-a4ae-ad8d14e40d90",
+            vizId: "c17072a9-8f4b-4016-9dcf-920c5ec65eda",
+            visibleActions: ['show-details'],
+        });
 
+        embed
+            .on(EmbedEvent.CustomAction, payload => {
+                if (payload.id === 'show-details' || payload.data.id === 'show-details') {
+                    showDetails(payload);
+                }
+            })
+            .render();
+    }
 
-  // Show a pop-up with the product sales for the state selected.
-  const showDetails = (payload) => {
-    const pinboardContextData = LiveboardContextActionData.createFromJSON(payload);
+    // Show a pop-up with the product sales for the state selected.
+    const showDetails = (payload) => {
 
-    // Only gets the first column value.
-    const filter = pinboardContextData.data[pinboardContextData.columnNames[0]];
+        // -------------------------------------------------------------------------------
+        // Exercise 4.2: Show a modal box with the details of the state selected.
+        // 1. Create a LiveboardContextActionData object from the payload.
+        // 2. Get the filter value from the data.
+        // 3. Create a new LiveboardEmbed object with runtime filters using the state.
+        // Note the embed-id for the modal box is "show-details".
+        // -------------------------------------------------------------------------------
 
-    // Now show the details with the filter applied in a popup.
-    const popupEmbed = new LiveboardEmbed("#show-details", {
-      liveboardId: "879252b1-510c-4fed-a4ae-ad8d14e40d90",
-      vizId: "4a002bae-8e3c-4bcd-8bbf-1e74cea4e41e",
-      runtimeFilters: [{
-        columnName: 'state',
-        operator: RuntimeFilterOp.EQ,
-        values: [filter]
-      }],
-    });
+        const pinboardContextData = LiveboardContextActionData.createFromJSON(payload);
 
-    popupEmbed.render();
+        // Only gets the first column value.
+        const filter = pinboardContextData.data[pinboardContextData.columnNames[0]];
 
-    // display the model box.
-    showModal = 'visible';
-  }
+        // Now show the details with the filter applied in a popup.
+        const popupEmbed = new LiveboardEmbed("#show-details", {
+            liveboardId: "879252b1-510c-4fed-a4ae-ad8d14e40d90",
+            vizId: "4a002bae-8e3c-4bcd-8bbf-1e74cea4e41e",
+            runtimeFilters: [{
+                columnName: 'state',
+                operator: RuntimeFilterOp.EQ,
+                values: [filter]
+            }],
+        });
 
-  /** Whether to show the modal. */
-  let showModal = 'hidden';
+        popupEmbed.render();
 
-  onMount(() => {
-    onCustomAction();
-  })
+        // display the model box.
+        showModal = 'visible';
+    }
+
+    /** Whether to show the modal. */
+    let showModal = 'hidden';
+
+    onMount(() => {
+        onCustomAction();
+    })
 
 </script>
 
@@ -68,11 +81,11 @@
 </div>
 
 <style>
-  #embed {
-    height: 90vh;
-  }
+    #embed {
+        height: 90vh;
+    }
 
-  #show-details {
-    height: 60vh;
-  }
+    #show-details {
+        height: 60vh;
+    }
 </style>

@@ -1,8 +1,10 @@
 import { writable } from 'svelte/store';
+import { cssFiles } from './constants.js';
 
 export const store = writable({
-  tsUser: 'user251',  // Set to the user to use.  Ideally this would be prompted for.
-  version: "unknown",  // TODO add the API call to get.
+  tsUser: 'user251',  // Set to the user to use.
+  version: "unknown",  // Set by API call.
   token: null,  // Set when authenticating.
   tsAPI: null,  // Set up after authenticating.
+  cssFile: cssFiles.default // cssFile being used.
 });
