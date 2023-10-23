@@ -14,7 +14,7 @@
 
         if (! mounted) return;  // only display if the page has mounted.
 
-        // -------------------------------------------------------------------------------
+       // -------------------------------------------------------------------------------
         // Exercise 3.1: Embed a chart and listen for the EmbedEvent.Data event.
         // 1. Create a new SearchEmbed object using the playground that uses the worksheet
         //    and has a default search.
@@ -24,6 +24,19 @@
         // -------------------------------------------------------------------------------
 
         // const embed = ....
+        const embed = new SearchEmbed("#chart-embed", {
+            dataSources: [worksheetID],
+            collapseDataSources: true,
+            searchOptions: {
+                searchTokenString: '[sales] [product type] top 30 [sales date].monthly',
+                executeSearch: true,
+            },
+        });
+
+        embed
+            .on(EmbedEvent.Data, payload => showTable(embed))
+            .render();
+
     }
 
     const showTable = (embed) => {
@@ -36,6 +49,22 @@
         // -------------------------------------------------------------------------------
 
         // embed.trigger(HostEvent.GetTML).then(response => { ....
+        embed.trigger(HostEvent.GetTML).then(response => {
+            let search = response.answer.search_query;
+            console.log("TML string: " + search);
+
+            const embedTable = new SearchEmbed("#table-embed", {
+                dataSources: [worksheetID],
+                hideDataSources: true,
+                forceTable: true,
+                searchOptions: {
+                    searchTokenString: search,
+                    executeSearch: true,
+                },
+                visibleActions: []  // hide all actions.
+            });
+            embedTable.render();
+        });
     }
 
     onMount(() => {

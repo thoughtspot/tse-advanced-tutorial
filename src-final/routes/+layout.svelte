@@ -3,6 +3,11 @@
     import {invalidateAll} from "$app/navigation";
     import ts_logo from '$lib/images/ts.png';
     import {
+        Footer,
+        FooterBrand,
+        FooterCopyright,
+        FooterLink,
+        FooterLinkGroup,
         Navbar,
         NavBrand,
         NavHamburger,
@@ -21,26 +26,62 @@
     $: activeUrl = $page.url.pathname;
 
     let cssMode = 'default';  // current options are 'default' and 'dark'. See cssFiles in constants.js
+    const toggleCSS = () => {
+        cssMode = cssMode == 'default' ? 'dark' : 'default';
+
+        console.log('cssMode is now ' + cssMode);
+        $store.cssFile = cssFiles[cssMode];
+        tsInitialize();  // call to re-initialize with the new style.
+    }
 
     const tsInitialize = async () => {
 
             // -------------------------------------------------------------------------------
-            // Exercise 1: Update the section below to use trusted authentication.  You will need to:
-            // 1. Set the authType to TrustedAuthToken
-            // 2. Set the username to the value of $store.tsUser
-            // 3. Set the getAuthToken to the getAuthToken function
-            // 4. Uncomment the line to set up the API.
-            // -------------------------------------------------------------------------------
-
-            // -------------------------------------------------------------------------------
             // Exercise 5: Add the customCSSUrl to the customizations section of the init
             // function to be the value of the $store.cssFile variable.  See toggleCSS below.
+            // Note that the table text color is not currently available in the variables, so
+            // it must be set using an UNSTABLE rule.
             // -------------------------------------------------------------------------------
 
-            const ee = null; // init()
+            /// The following is needed to show the text in a table.  There are currently no variables for table text.
+            let customCss;
+            if (cssMode == 'default') {
+                customCss = '';
+            } else {
+                customCss = {
+                    rules_UNSTABLE: {
+                        ".bk-outline .ag-theme-alpine .ag-row": {
+                            color: "white"
+                        },
+                    },
+                }
+            }
+
+            // -------------------------------------------------------------------------------
+            // Exercise 1: Update the section below to use trusted authentication.  You will need to:
+            // 1. Copy the init from the playground.
+            // 2. Set the authType to TrustedAuthToken
+            // 3. Set the username to the value of $store.tsUser  (update the value in the store.js file)
+            // 4. Set the getAuthToken to the getAuthToken function
+            // 5. Uncomment the line to set up the API.
+            // -------------------------------------------------------------------------------
+
+             const ee = init({
+                    thoughtSpotHost: constants.tsURL,
+                    // authType: AuthType.None,
+                    authType: AuthType.TrustedAuthToken,
+                    username: $store.tsUser,
+                    getAuthToken: getAuthToken,
+                    customizations: {
+                        style: {
+                            customCSSUrl: $store.cssFile,
+                            customCSS: customCss
+                        }
+                    }
+                }
+            );
 
             if (ee) {
-                // This section shows how to capture the return values from init().
                 ee
                     .on(AuthStatus.SUCCESS, () => {
                         console.log("Success");
@@ -53,8 +94,8 @@
                     })
             }
 
-            // Uncomment to set up the API after calling init.
-            // await setupAPI();  // make sure the API is set up.
+            // Exercise 2: Uncomment the following line to set up the API.
+            await setupAPI();  // make sure the API is set up.
         }
     ;
 
@@ -64,20 +105,17 @@
 
         const response = await fetch(endpoint);
 
+        // Have to remember the token for the API calls.
         $store.token = await response.json();
         console.log('token == ' + $store.token);
 
-        // Set up the v2 API
         return $store.token;
     };
 
     const setupAPI = async () => {
         console.log('setting up the API');
-        /*  This works if the auth token was called.  But if it isn't, then the auth token doesn't exist.
-        $store.tsAPI = new TSAPIv2(constants.tsURL, $store.token);
-         */
+
         // If a token exists from auth, then use that.  If not, then get a new one.
-        // Might be able to just not use the store token.
         let token = $store.token;
         if (!token) {
             token = await getAuthToken();
@@ -107,17 +145,15 @@
         // This can only be done after the API object is created.
         // -------------------------------------------------------------------------------
 
-    }
-
-    const toggleCSS = () => {
-        if (cssMode === 'default') {
-            cssMode = 'dark';
-        } else {
-            cssMode = 'default';
-        }
-        console.log('cssMode is now ' + cssMode);
-        $store.cssFile = cssFiles[cssMode];
-        tsInitialize();
+        // $store.tsAPI ...
+        $store.tsAPI.system().then((response) => {
+            console.log(response);
+            try {
+                $store.version = response.release_version;
+            } catch (e) {
+                console.log('error getting version: ' + e);
+            }
+        });
     }
 
     onMount(() => {
