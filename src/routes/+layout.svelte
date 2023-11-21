@@ -64,7 +64,8 @@
     // 4. Set the getAuthToken to the getAuthToken function
     // -------------------------------------------------------------------------------
 
-    const ee = init({});
+    // call the init function to set up the ThoughtSpot embed.
+    const ee = null;
 
     if (ee) {
       ee.on(AuthStatus.SUCCESS, () => {
