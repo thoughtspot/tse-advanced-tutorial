@@ -19,8 +19,6 @@
         // calls showDetails.
         // -------------------------------------------------------------------------------
         document.getElementById("embed").innerHTML = "<p class='warning'>Custom action not yet embedded.</p>";
-
-        // const embed = ....
     }
 
     // Show a pop-up with the product sales for the state selected.
@@ -34,18 +32,15 @@
         // Note the embed-id for the modal box is "show-details".
         // -------------------------------------------------------------------------------
 
-        // const pinboardContextData = ....
+        const pinboardContextData = null;  // TODO: Create a LiveboardContextActionData object from the payload.
 
         // Only gets the first column value.
-        // const filter = ....
+        const filter = null; // TODO: Get the filter value from the data.
 
-        // Now show the details with the filter applied in a popup and render it.
-        // const popupEmbed = ....
-
-        // popupEmbed.render();
+        // TODO: Now show the details with the filter applied in a popup.
 
         // display the model box.
-        // showModal = 'visible';
+        showModal = 'visible';
     }
 
     /** Whether to show the modal. */

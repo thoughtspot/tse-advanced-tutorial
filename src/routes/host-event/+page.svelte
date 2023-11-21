@@ -14,7 +14,7 @@
 
         if (! mounted) return;  // only display if the page has mounted.
 
-        // -------------------------------------------------------------------------------
+       // -------------------------------------------------------------------------------
         // Exercise 3.1: Embed a chart and listen for the EmbedEvent.Data event.
         // 1. Create a new SearchEmbed object using the playground that uses the worksheet
         //    and has a default search.
