@@ -45,7 +45,7 @@ import {Footer, FooterBrand, FooterCopyright, FooterLink, FooterLinkGroup} from 
                     <span>&nbsp;</span>  <!-- spacer - this seems hacky -->
                     <!-- Training Note: The version will automatically update after REST API calls -->
                     <FooterLink classA="hover:underline hover:text-orange-600" href="{constants.tsURL}" target="_blank">
-                        ThoughtSpot Host (v {$store.version})
+                        ThoughtSpot Host
                     </FooterLink>
                     <FooterLink classA="hover:underline hover:text-orange-600" href="{constants.developerDocs}"
                                 target="_blank">

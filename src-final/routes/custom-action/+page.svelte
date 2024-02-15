@@ -13,7 +13,7 @@
         if (! mounted) return;  // only display if the page has mounted.
 
         // -------------------------------------------------------------------------------
-        // Exercise 4.1: Embed a liveboard with a state and handle the custom action event.
+        // Exercise 3.1: Embed a liveboard with a state and handle the custom action event.
         // 1. Create a liveboard embed object using the playground.
         // 2. Add a custom action event handler to the embed object when rendering that
         // calls showDetails.
@@ -39,17 +39,17 @@
     const showDetails = (payload) => {
 
         // -------------------------------------------------------------------------------
-        // Exercise 4.2: Show a modal box with the details of the state selected.
+        // Exercise 3.2: Show a modal box with the details of the state selected.
         // 1. Create a LiveboardContextActionData object from the payload.
         // 2. Get the filter value from the data.
         // 3. Create a new LiveboardEmbed object with runtime filters using the state.
         // Note the embed-id for the modal box is "show-details".
         // -------------------------------------------------------------------------------
 
-        const pinboardContextData = LiveboardContextActionData.createFromJSON(payload);
+        const liveboardContextData = LiveboardContextActionData.createFromJSON(payload);
 
         // Only gets the first column value.
-        const filter = pinboardContextData.data[pinboardContextData.columnNames[0]];
+        const filter = liveboardContextData.data[liveboardContextData.columnNames[0]];
 
         // Now show the details with the filter applied in a popup.
         const popupEmbed = new LiveboardEmbed("#show-details", {
@@ -78,7 +78,7 @@
 
 </script>
 
-<Modal id="show-details-modal" showCancel={true} visibility={showModal}>
+<Modal showCancel={true} visibility={showModal}>
     <div id="show-details"></div>
 </Modal>
 

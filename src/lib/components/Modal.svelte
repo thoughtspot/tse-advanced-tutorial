@@ -1,5 +1,5 @@
 <script>
-  export let closing; // Expects a handler to a function that takes no parameters.
+  export let closing = null; // Expects a handler to a function that takes no parameters.
   export let visibility = 'hidden';  // users of the modal would set this to hidden or visible.
   export let showCancel = true;
 
