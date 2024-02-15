@@ -18,21 +18,8 @@
         // 2. Add a custom action event handler to the embed object when rendering that
         // calls showDetails.
         // -------------------------------------------------------------------------------
-        // document.getElementById("embed").innerHTML = "<p class='warning'>Custom action not yet embedded.</p>";
+        document.getElementById("embed").innerHTML = "<p class='warning'>Custom action not yet embedded.</p>";
 
-        const embed = new LiveboardEmbed("#embed", {
-            liveboardId: "879252b1-510c-4fed-a4ae-ad8d14e40d90",
-            vizId: "c17072a9-8f4b-4016-9dcf-920c5ec65eda",
-            visibleActions: ['show-details'],
-        });
-
-        embed
-            .on(EmbedEvent.CustomAction, payload => {
-                if (payload.id === 'show-details' || payload.data.id === 'show-details') {
-                    showDetails(payload);
-                }
-            })
-            .render();
     }
 
     // Show a pop-up with the product sales for the state selected.
@@ -52,17 +39,6 @@
         const filter = liveboardContextData.data[liveboardContextData.columnNames[0]];
 
         // Now show the details with the filter applied in a popup.
-        const popupEmbed = new LiveboardEmbed("#show-details", {
-            liveboardId: "879252b1-510c-4fed-a4ae-ad8d14e40d90",
-            vizId: "4a002bae-8e3c-4bcd-8bbf-1e74cea4e41e",
-            runtimeFilters: [{
-                columnName: 'state',
-                operator: RuntimeFilterOp.EQ,
-                values: [filter]
-            }],
-        });
-
-        popupEmbed.render();
 
         // display the model box.
         showModal = 'visible';

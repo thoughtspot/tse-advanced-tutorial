@@ -25,15 +25,6 @@
    */
   const doSearch = async () => {
     try {
-      const token = await getAuthToken($store.tsUser);
-      console.log('api token ==> ${token}');
-      const api = new TSAPIv2(constants.tsURL, token);
-
-      const searchResults = await api.searchData(tmlquery, worksheetId);
-      console.log(searchResults);
-      searchData = SearchData.createFromJSON(searchResults);
-      searchDataTable = searchData.getDataAsTable();
-      console.log(searchData);
     } catch (e) {
       console.error(e);
     }
@@ -67,4 +58,13 @@
       {/each}
     </TableBody>
   </Table>
+{:else}
+  <p class="info">Search data not yet implemented.</p>
 {/if}
+
+<style>
+  .info {
+      color: red;
+      font-weight: bold;
+  }
+</style>

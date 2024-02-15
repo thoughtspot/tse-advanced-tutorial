@@ -58,21 +58,7 @@
     // 4. Set the getAuthToken to use the getAuthToken function
     // -------------------------------------------------------------------------------
 
-    const ee = init({
-      thoughtSpotHost: constants.tsURL,
-      // authType: AuthType.None,
-      authType: AuthType.TrustedAuthToken,
-      username: $store.tsUser,
-      getAuthToken: () => {
-        return getAuthToken($store.tsUser);
-      },
-      customizations: {
-        style: {
-          customCSSUrl: $store.cssFile,
-          customCSS: customCss,
-        },
-      },
-    });
+    const ee = null;
 
     if (ee) {
       ee.on(AuthStatus.SUCCESS, () => {
