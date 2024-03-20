@@ -71,6 +71,11 @@
           customCSSUrl: $store.cssFile,
           customCSS: customCss,
         },
+        content: {
+          strings: {
+            "Go": "Search",
+          },
+        },
       },
     });
 
