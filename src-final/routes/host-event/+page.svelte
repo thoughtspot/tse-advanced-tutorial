@@ -56,6 +56,7 @@
         dataSources: [worksheetID],
         hideDataSources: true,
         forceTable: true,
+        hideSearchBar: true,
         searchOptions: {
           searchTokenString: search,
           executeSearch: true,
